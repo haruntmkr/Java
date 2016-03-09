@@ -1,0 +1,1816 @@
+
+import java.util.*;
+public class Algoritma {	
+	public static  int[][] zmin_sat(int [][]dizi,int boyut)
+	{
+		int min=0 ;
+		int  [] dizimin=new int[boyut];
+		for (int i=0;i<boyut;i++)
+		{
+			min=dizi[i][0];
+			for (int j=0;j<boyut;j++)
+			{
+				if(min>dizi[i][j])
+				{
+					min=dizi[i][j];
+				}			
+			}
+			System.out.print("min deger: "+min+" ");
+			dizimin[i]=min;
+		}
+		System.out.println("");
+		for(int i=0;i<boyut;i++)
+		{
+			for(int j=0;j<boyut;j++)
+			{
+				dizi[i][j]=dizi[i][j]-dizimin[i];	
+			}	
+		}
+		return dizi;
+	}
+	
+	public static void dizi_yaz (int [][] dizi,int boyut)
+	{
+		
+		for(int i=0;i<boyut;i++)
+		{
+			for(int j=0;j<boyut;j++)
+			{
+				
+				System.out.print(dizi[i][j]+"   ");
+				
+			}
+			System.out.println("");
+		}
+		
+	}
+	public static  int[][] zmin_sut(int [][]dizi,int boyut)
+	{
+		int min=0 ;
+		int  [] dizimin=new int[boyut];
+		for (int i=0;i<boyut;i++)
+		{
+			min=dizi[0][i];
+			for (int j=0;j<boyut;j++)
+			{
+				if(min>dizi[j][i])
+				{
+					min=dizi[j][i];				
+				}			
+			}
+			System.out.print("sut min deger: "+min+"  ");
+			dizimin[i]=min;
+		}
+		for(int i=0;i<boyut;i++)
+		{
+			for(int j=0;j<boyut;j++)
+			{
+				dizi[j][i]=dizi[j][i]-dizimin[i];		
+			}
+			
+		}
+		
+		System.out.println("");
+		return dizi;
+	}
+	
+	
+	public static int [] sifir_say_sat(int [][]gecici,int boyut)
+	{
+		int []say_sat=new int [boyut];
+		
+		for(int i=0;i<boyut;i++)
+		{
+			for(int j=0;j<boyut;j++)
+			{
+				if(gecici[i][j]==0)
+				{
+					say_sat[i]++;//ÝKÝ BOYUTLU DÝZÝNÝN J DEÐERÝNDEKÝLER
+				}
+			}
+		}
+		
+
+		return say_sat;
+		
+	}
+	public static int [] sifir_say_sut(int [][]gecici,int boyut)
+	{
+		int []say_sut=new int [boyut];
+		for(int i=0;i<boyut;i++)
+		{
+			for(int j=0;j<boyut;j++)
+			{
+				
+				if(gecici[j][i]==0)
+				{
+					say_sut[i]++;//ÝKÝ BOYUTLU DÝZÝNÝN Ý DEÐERÝNDEKÝLER 
+				}
+				
+			}
+		}
+		
+		return say_sut;
+
+		
+	}
+	
+	public static int  cizgi_say_sat(int [][]gecici,int karakter)
+	{
+		int adet_sat=0,kontrol=0;
+		
+		for(int i=0;i<gecici.length;i++)
+		{
+			for(int j=0;j<gecici.length;j++)
+			{
+				//System.out.println("I AM HERE");
+				if(gecici[i][j]==karakter)
+				{
+					kontrol++;
+					if(kontrol==gecici.length)
+					adet_sat++;
+				}
+				else
+				{
+					
+					
+					break;
+				}
+				
+			}
+			kontrol=0;
+		}
+		
+		return adet_sat;
+
+		
+	}
+	public static int  cizgi_say_sut(int [][]gecici,int karakter)
+	{
+	int adet_sut=0,kontrol=0;
+		
+		for(int i=0;i<gecici.length;i++)
+		{
+			for(int j=0;j<gecici.length;j++)
+			{
+				//System.out.println("I AM HERE");
+				if(gecici[j][i]==karakter)
+				{
+					kontrol++;
+					if(kontrol==gecici.length)
+					adet_sut++;
+				}
+				else
+				{
+					
+					
+					break;
+				}
+				
+			}
+			kontrol=0;
+		}	
+		return adet_sut;
+
+		
+	}
+	public static int[] siralama(int sirala[]) {
+		int tmp=0; 
+		for (int i=0; i<sirala.length-1; i++) {
+		     
+		      for (int j = 1; j < sirala.length-i; j++) {
+		         if (sirala[j] > sirala[j-1]) {
+		            tmp = sirala[j-1];
+		            sirala[j-1]=sirala[j];
+		            sirala[j]=tmp;
+		         } 
+		      }
+		   }
+		   
+		   return sirala;
+		}
+	
+	public static int[]  index_gonder(int []dizi,int[]dizi2,int boyut)
+	{
+		int [] index=new int[boyut];
+		
+		
+		int[]temp=new int [boyut];
+		int[]temp2=new int [boyut];
+		
+		for(int i=0;i<boyut;i++)
+		{
+			temp[i]=dizi[i];
+			temp2[i]=dizi2[i];
+			
+		}
+		
+		
+		
+		
+		
+		for(int i=0;i<boyut;i++)
+		{
+					for(int j=0;j<boyut;j++)
+							{
+					
+							if(temp[i] == temp2[j])//düzenli diziden bir sayý alýp düzensizde nerede olduðuna bakýyor. oradaki index deðerini diziye gönderiyor.
+											{
+										
+												index[i]=j;		
+												temp[i]=-1;
+												temp2[j]=-1;
+												break;
+												
+											}
+							}
+		}
+			
+	
+		
+		
+		return index;
+	}
+	
+	public static int  [][] temizle(int [][] gecici,int [][]silinenler, int boyut)
+	{
+		
+		
+
+		
+		for(int i=0;i<gecici.length;i++)
+		{
+			for(int j=0;j<gecici.length;j++)
+			{
+				if(gecici[i][j]==-5)   		//gecicide deðeri -5 olan hücrelerin yerine gerçek deðerleri yazýlýyor
+				{
+					
+					gecici[i][j]=silinenler[i][j];
+					
+				}
+				
+				
+				
+				
+			}
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		return gecici;
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	public static  int[][] k_islemleri(int [][] gecici,int [][]silinenler, int boyut)
+	{
+		
+		System.out.println("Dizi k islemlerinden önce yazdýrýldý");
+		dizi_yaz(gecici, boyut);
+		System.out.println("");
+		
+		
+		
+		//geriye kalan elemanlardan en düþük deðerlikli olaný seç k deðeri nedir?
+				int enk=0;
+				
+				for(int i=0;i<boyut;i++)
+				{
+					for(int j=0;j<boyut;j++)
+					{
+						
+						if(gecici[i][j]!=-5)
+						{
+							enk=gecici[i][j];
+							break;
+						}
+					}
+				}
+				
+				for(int i=0;i<boyut;i++)
+				{
+					
+					for(int j=0;j<boyut;j++)
+					{
+						if(enk>gecici[i][j] && gecici[i][j] != -5 )
+						{
+							
+							   enk=gecici[i][j];
+						}
+					}
+				}
+				System.out.println("");
+				
+				System.out.println("k degeri "+enk);
+				System.out.println("");
+				
+				
+				for(int i=0;i<boyut;i++)
+				{
+					
+					for(int j=0;j<boyut;j++)
+					{
+						if(gecici[i][j] != -5 )
+						{
+							
+							   gecici[i][j]=gecici[i][j]-enk;
+						}
+					}
+				}
+
+				System.out.println("");
+				System.out.println("k=enk deðeri çizgi çekilmeyen sayýlardan çýkarýldý");
+				System.out.println("");		
+				dizi_yaz(gecici,boyut);
+				
+				
+				
+				/*k deðeri kesiþim noktalarýna ekleniyor */
+				 ArrayList <Integer> dizi1=new ArrayList<Integer>();
+				 int kontrol=0;
+				 
+					 for(int j=0;j<gecici.length;j++)
+					 {
+						 for(int t=0;t<boyut;t++)
+						 {
+							 
+							 if(gecici[j][t]==-5)
+								{
+									kontrol=1;
+									
+								}
+							 else
+							 {
+								 kontrol=0;
+								 break;
+							 }
+						 }
+						 if(kontrol==1){
+							 dizi1.add(j);
+						} 
+					}	 
+					
+					
+				 for(int t=0;t<dizi1.size();t++){
+					 
+					
+					System.out.println(dizi1.get(t)+". satir -5 deðerinde");
+					 
+					
+				 }
+			
+				 //sutun -----------
+				 
+				 
+				 ArrayList <Integer> dizi2=new ArrayList<Integer>();
+			
+				 
+					 for(int j=0;j<gecici.length;j++)
+					 {
+						 for(int t=0;t<boyut;t++)
+						 {
+							 
+							 if(gecici[t][j]==-5)
+								{
+									kontrol=1;
+									
+								}
+							 else
+							 {
+								 kontrol=0;
+								 break;
+							 }
+						 }
+						 if(kontrol==1){
+							 
+							 dizi2.add(j);
+							 } 
+					}	 
+					
+					
+				 for(int t=0;t<dizi2.size();t++){
+					
+					 System.out.println(dizi2.get(t)+".sutun -5 deðerinde");
+					
+					 
+					 	}
+				
+				 
+				 //bitiþ sutun-----------
+				 
+			//enk deðerini çizgilerin kesiþim noktalarýna eklememiz için öncelikle -5 leri kaldýrmamýz gerekiyor.
+				 //Çünkü -5 lerin altýnda 0 dan farklý bir deðer varsa o sayýya ulaþarak onun üzerine ekleme yapmalýyýz
+					//çizgilerin kesiþim noktalalarý sýfýr olmayabiliyor
+				
+				/*k silinen deðerler yerlerine yazýlýyor */
+
+				
+				gecici=temizle(gecici,silinenler,boyut);
+
+				System.out.println("");
+				System.out.println("-5 ler temizlendi ve eski deðerler yerlerine yazýldý");
+				
+				
+				
+				/* silinen deðerler yerlerine yazýldý */
+				
+		     /*eski deðerler girildiðine göre artýk çzigilerin köþe noktalarýna enk yani k deðerimizi ekleyebiliriz.*/
+			
+			
+				 for(int i=0;i<dizi1.size();i++)
+				 {
+					 for(int j=0;j<dizi2.size();j++)
+					 {
+						 gecici[dizi1.get(i)][dizi2.get(j)]= gecici[dizi1.get(i)][dizi2.get(j)]+enk;//enk deðeri k deðeri olarak eklendi	
+					
+						 
+					 }
+					 
+					 
+				 }
+					
+					System.out.println("k deðerleri köþe noktalarýna eklendi");
+				//dizi_yaz(gecici,boyut);	
+				/*köþe noktalarýna enk=k deðeri eklendi.*/
+					return gecici;
+		
+		
+		
+		
+		
+	} 
+	
+
+	
+	public static int toplam_cizgi(int [][] gecici,int boyut)
+	{
+
+	 int karakter=-5;
+	 int toplam=cizgi_say_sat(gecici, karakter)+cizgi_say_sut(gecici, karakter);
+	 if(gecici.length*2==toplam)
+	 {
+		 toplam=toplam/2;     			//matrisin üzeri tamamen çizgilerle çizlebilmiþ yani optimum çözüme ulaþýlmýþsa satýr ve sutun deðerleri
+		 								//2 kez hesaplanýyor ve bu durumda örneðin 5x5 matriste 10 çizgi var diyor. Bunu önlemek için boyut toplamýn 2 katýysa
+		 								//toplamý 2 ye bölerek gerçek (optimum) çizgi adedini yazdýrmýþ oluyoruz.
+		 
+	 }
+	 
+	 
+	 
+	 return toplam;
+	
+		
+		
+		
+	}
+	public static int[][] cizgi_cek1(int [][]gecici,int [][]silinenler, int boyut)
+	{
+		
+	     /*Yapýlacak çözümün en iyi olup olmadýðýný test etmek için 0 larýn üzerini
+		 Maximum 0 ý kapatacak þekilde çizmemiz yahut bunlarý çizmiþ gibi bir yerde tutmamýz gerekli
+			Yani optimum olmasý için
+			En az sayýda çizgi kullanmayýz. 5x5 tabloda 5 tane çizgi kullanmamýz gerekiyor.*/
+			
+	//------satýr ve sutun indexleri hesaplandý---------------------------------------------------
+			
+	//birden fazla satýr ya da sutunda olan 0 larý tek bir çizgiyle kapatacaðýz
+		
+		for(int i=0;i<gecici.length;i++)
+		{
+			for(int j=0;j<gecici.length;j++)
+			{
+				gecici[i][j]=silinenler[i][j];
+			}
+			
+		}
+		
+		
+		
+		int []say_sat=new int [boyut];/*satýrdaki 0 adedi*/
+		int []say_sut=new int [boyut];/*sutundaki 0 adedi*/
+		int []say_sat2=new int [boyut];/*satýrdaki 0 adedi*/
+		int []say_sut2=new int [boyut];/*sutundaki 0 adedi*/
+		int []sat_index=new int[boyut];/*0 larýn -5 ile çizildiði satýr indexi*/
+		int []sut_index=new int[boyut];/*0 larýn -5 ile çizildiði sutun indexi*/
+
+		say_sat=sifir_say_sat(gecici,boyut);
+		say_sat2=sifir_say_sat(gecici,boyut);
+		say_sut=sifir_say_sut(gecici,boyut);
+		say_sut2=sifir_say_sut(gecici,boyut);
+		
+		System.out.println("satýrlardaki 0 sayýsý");
+		for(int i=0;i<boyut;i++)
+		{
+			System.out.println(say_sat[i]);
+			
+		}
+		System.out.println("sutunlardaki 0 sayýsý");
+		for(int i=0;i<boyut;i++)
+		{
+			System.out.println(say_sut[i]);
+			
+		}
+		
+		
+		
+//------satýr ve sutun indexleri hesaplanýyor (0 sayýlarýnýn hani satýrda ya da sutunda fazla olduðu sýralanýp indexleri hesaplanýyor)-------	
+		
+		/*
+		1 1 1 3 5      sirali dizi
+ 		3 1 1 5 1      sirasýz gerçek deðer
+		1 2 4 0 3      indexler */
+		
+		say_sut2=siralama(say_sut2);//say_sut2 sýralandý ve kullanýma hazýrdýr
+		System.out.println("siralandi say_sut 2");
+		System.out.println("");
+		for(int i=0;i<boyut;i++)
+		{
+			System.out.print(say_sut2[i]+" ");
+			
+		}
+		System.out.println("");
+		System.out.println("say_sut");
+		System.out.println("");
+		for(int i=0;i<boyut;i++)
+		{
+			System.out.print(say_sut[i]+" ");
+			
+		}
+		System.out.println("");
+
+		sut_index=index_gonder(say_sut2,say_sut,boyut);//1. sýralanmýþ dizi, 2. sýralanmamýþ dizi, 3. boyut
+		System.out.println("");
+		System.out.println("sutun index deðeri");
+		for(int i=0;i<boyut;i++)
+		{
+			System.out.print(sut_index[i]+" ");
+			
+		}
+		System.out.println("");
+
+		say_sat2=siralama(say_sat2);//say_sut2 sýralandý ve kullanýma hazýrdýr
+		System.out.println("siralandi say_sat 2");
+		System.out.println("");
+		for(int i=0;i<boyut;i++)
+		{
+			System.out.print(say_sat2[i]+" ");
+			
+		}
+		System.out.println("");
+		System.out.println("say_sat");
+		System.out.println("");
+		for(int i=0;i<boyut;i++)
+		{
+			System.out.print(say_sat[i]+" ");
+			
+		}
+		System.out.println("");
+		
+		sat_index=index_gonder(say_sat2,say_sat,boyut);//1. sýralanmýþ dizi, 2. sýralanmamýþ dizi, 3. boyut
+		System.out.println("");
+		System.out.println("satir index deðeri");
+		for(int i=0;i<boyut;i++)
+		{
+			System.out.print(sat_index[i]+" ");
+			
+		}
+		System.out.println("");
+		
+		System.out.println("Kontrol noktasý satir");
+		for(int i=0;i<boyut;i++)
+		{
+			System.out.println(say_sat2[i]+" ");
+		}
+		
+		System.out.println("");
+		for(int i=0;i<boyut;i++)
+		{
+			System.out.println(say_sut2[i]+" ");
+		}
+		System.out.println("");
+	
+		
+		
+		
+		
+		
+		/*1. aþama BAÞLIYOORRR*/
+		int indis=0;
+	for(int t=0;t<boyut;t++){
+		//for(int i=0;i<boyut;i++){
+			int i=0;
+			if(say_sat2[i]>say_sut2[i] && say_sat2[i]!=1)
+			{
+				for(int j=0;j<boyut;j++)
+				{
+					indis=sat_index[i];//0 ýn fazla olduðu yer
+					gecici[indis][j]=-5;
+					
+				}
+				
+				/*tekrardan satir sutun sayýlýyor*/
+				say_sat=sifir_say_sat(gecici,boyut);
+				say_sat2=sifir_say_sat(gecici,boyut);
+				say_sut=sifir_say_sut(gecici,boyut);
+				say_sut2=sifir_say_sut(gecici,boyut);
+				say_sut2=siralama(say_sut2);
+				sut_index=index_gonder(say_sut2,say_sut,boyut);
+				say_sat2=siralama(say_sat2);
+				sat_index=index_gonder(say_sat2,say_sat,boyut);
+				/*tekrardan satir sutun sayýlýyor*/
+				
+				
+				/*System.out.println("say_sat2 ");
+				for(int k=0;k<boyut;k++){ System.out.print(say_sat2[i]+" "); }
+				System.out.println("");
+				System.out.println("say_sut2 ");
+				for(int k=0;k<boyut;k++){ System.out.print(say_sut2[i]+" "); }
+				sat_index=index_gonder(say_sat2,say_sat,boyut);
+				System.out.println("");
+				System.out.println("sat_index ");
+				for(int k=0;k<boyut;k++){ System.out.print(sat_index[i]+" "); }*/
+				
+			}
+			if(say_sat2[i] < say_sut2[i] && say_sut2[i]!=1)
+			{
+				for(int j=0;j<boyut;j++)
+				{
+					indis=sut_index[i];//0 ýn fazla olduðu yer
+					gecici[j][indis]=-5;
+					
+				}
+
+
+				/*tekrardan satir sutun sayýlýyor*/
+				say_sat=sifir_say_sat(gecici,boyut);
+				say_sat2=sifir_say_sat(gecici,boyut);
+				say_sut=sifir_say_sut(gecici,boyut);
+				say_sut2=sifir_say_sut(gecici,boyut);
+				say_sut2=siralama(say_sut2);
+				sut_index=index_gonder(say_sut2,say_sut,boyut);
+				say_sat2=siralama(say_sat2);
+				sat_index=index_gonder(say_sat2,say_sat,boyut);
+				/*tekrardan satir sutun sayýlýyor*/
+				
+				
+				
+				/*System.out.println("say_sat2 ");
+				for(int k=0;k<boyut;k++){ System.out.print(say_sat2[i]+" "); }
+				System.out.println("");
+				System.out.println("sat_index ");
+				for(int k=0;k<boyut;k++){ System.out.print(sat_index[i]+" "); }
+				System.out.println("");
+				System.out.println("say_sut2 ");
+				for(int k=0;k<boyut;k++){ System.out.print(say_sut2[i]+" "); }
+				sut_index=index_gonder(say_sut2,say_sut,boyut);
+				System.out.println("");
+				System.out.println("sut_index ");
+				for(int k=0;k<boyut;k++){ System.out.print(sut_index[i]+" "); }*/
+				
+				
+				
+			}	
+			if(say_sat2[i] == say_sut2[i] && say_sat2[i]!=1)
+			{
+				for(int j=0;j<boyut;j++)
+				{
+					indis=sat_index[i];//0 ýn fazla olduðu yer
+					gecici[indis][j]=-5;
+					
+				}
+
+
+				
+				/*tekrardan satir sutun sayýlýyor*/
+				say_sat=sifir_say_sat(gecici,boyut);
+				say_sat2=sifir_say_sat(gecici,boyut);
+				say_sut=sifir_say_sut(gecici,boyut);
+				say_sut2=sifir_say_sut(gecici,boyut);
+				say_sut2=siralama(say_sut2);
+				sut_index=index_gonder(say_sut2,say_sut,boyut);
+				say_sat2=siralama(say_sat2);
+				sat_index=index_gonder(say_sat2,say_sat,boyut);
+				/*tekrardan satir sutun sayýlýyor*/
+				
+				
+				
+				
+				
+				/*System.out.println("say_sat2 ");
+				for(int k=0;k<boyut;k++){ System.out.print(say_sat2[i]+" "); }
+				System.out.println("");
+				System.out.println("sat_index ");
+				for(int k=0;k<boyut;k++){ System.out.print(sat_index[i]+" "); }
+				System.out.println("");
+				System.out.println("say_sut2 ");
+				for(int k=0;k<boyut;k++){ System.out.print(say_sut2[i]+" "); }
+				sut_index=index_gonder(say_sut2,say_sut,boyut);
+				System.out.println("");
+				System.out.println("sut_index ");
+				for(int k=0;k<boyut;k++){ System.out.print(sut_index[i]+" "); }*/
+				
+				
+				
+			}
+	
+			
+	
+	}
+		/*1. aþama BÝTÝYORRRR*/
+		
+		System.out.println("1. aþamada");
+		dizi_yaz(gecici,boyut);
+		System.out.println("");
+		
+		/*System.out.println("satir çizgi");*/
+		int cizgi_adet_satir=0;/*cizgi_say_sat(gecici,boyut,1);*/
+		/*System.out.println(cizgi_adet_satir);
+		System.out.println("");*/
+		int karakter=-5;
+		/*System.out.println("sutun çizgi");*/
+		int cizgi_adet_sutun=0;/*cizgi_say_sut(gecici,boyut,1);*/
+		/*System.out.println(cizgi_adet_sutun);
+		System.out.println("");*/
+		
+	//2.AÞAMA BURDAN BAÞLIYOOOOOOOORRRRRRRRR ÝKÝNCÝ AÞAMADA SATIR YA DA SUTUNDA TEK KALAN SIFIRLARIN DÝÐER ÇÝZÝLENLERLE EN FAZLA NE KADARINI KAPSAYABÝLÝR O ÇÖZÜLMEYE ÇALIÞILDI
+		for(int i=0;i<boyut;i++){
+			
+			for(int j=0;j<boyut;j++)
+			{
+				if(gecici[i][j]==0)
+				{
+					cizgi_adet_satir=cizgi_say_sat(gecici,karakter);
+					cizgi_adet_sutun=cizgi_say_sut(gecici,karakter);
+					System.out.println("satir çizgi");
+					System.out.println(cizgi_adet_satir);
+					System.out.println("");
+					System.out.println("sutun çizgi");
+					System.out.println(cizgi_adet_sutun);
+					System.out.println("");
+					
+					
+					
+					if(cizgi_adet_satir<cizgi_adet_sutun)
+					{
+						for(int k=j;k<=j;k++)
+						{
+							for(int t=0;t<boyut;t++){
+									gecici[t][k]=-5;
+							}
+						}
+					}
+					else if(cizgi_adet_satir>cizgi_adet_sutun)
+					{
+						for(int k=i;k<=i;k++)
+						{
+							for(int t=0;t<boyut;t++){
+									gecici[k][t]=-5;
+							}
+						}
+					}
+					else
+					{
+						for(int k=i;k<=i;k++)
+						{
+							for(int t=0;t<boyut;t++){
+									gecici[k][t]=-5;		//k burada i ile eþit olduðu için t döngü elemaný 0 dan 5 e deðer alýr
+							}								//bu sayede satýra bir çizgi daha çekilmiþ olunur
+						}
+					}
+					
+					
+					
+				}
+				
+				
+				
+			}
+		}
+//2. AÞAMA BURADA BÝTÝYOR.		
+		
+		System.out.println("2. aþamada");
+		dizi_yaz(gecici,boyut);
+		System.out.println("");
+		
+		
+		
+		
+		
+		
+		return gecici;
+		
+		
+		
+		
+		
+		
+	}
+	public static int[][] cizgi_cek2(int [][]gecici,int [][]silinenler,int boyut)
+	{
+		
+	     /*Yapýlacak çözümün en iyi olup olmadýðýný test etmek için 0 larýn üzerini
+		 Maximum 0 ý kapatacak þekilde çizmemiz yahut bunlarý çizmiþ gibi bir yerde tutmamýz gerekli
+			Yani optimum olmasý için
+			En az sayýda çizgi kullanmayýz. 5x5 tabloda 5 tane çizgi kullanmamýz gerekiyor.*/
+			
+	//------satýr ve sutun indexleri hesaplandý---------------------------------------------------
+			
+	//birden fazla satýr ya da sutunda olan 0 larý tek bir çizgiyle kapatacaðýz
+		
+		for(int i=0;i<gecici.length;i++)
+		{
+			for(int j=0;j<gecici.length;j++)
+			{
+				gecici[i][j]=silinenler[i][j];
+			}
+			
+		}
+		
+		
+		int []say_sat=new int [boyut];/*satýrdaki 0 adedi*/
+		int []say_sut=new int [boyut];/*sutundaki 0 adedi*/
+		int []say_sat2=new int [boyut];/*satýrdaki 0 adedi*/
+		int []say_sut2=new int [boyut];/*sutundaki 0 adedi*/
+		int []sat_index=new int[boyut];/*0 larýn -5 ile çizildiði satýr indexi*/
+		int []sut_index=new int[boyut];/*0 larýn -5 ile çizildiði sutun indexi*/
+
+		say_sat=sifir_say_sat(gecici,boyut);
+		say_sat2=sifir_say_sat(gecici,boyut);
+		say_sut=sifir_say_sut(gecici,boyut);
+		say_sut2=sifir_say_sut(gecici,boyut);
+		
+		System.out.println("satýrlardaki 0 sayýsý");
+		for(int i=0;i<boyut;i++)
+		{
+			System.out.println(say_sat[i]);
+			
+		}
+		System.out.println("sutunlardaki 0 sayýsý");
+		for(int i=0;i<boyut;i++)
+		{
+			System.out.println(say_sut[i]);
+			
+		}
+		
+		
+		
+//------satýr ve sutun indexleri hesaplanýyor (0 sayýlarýnýn hani satýrda ya da sutunda fazla olduðu sýralanýp indexleri hesaplanýyor)-------	
+		
+		/*
+		1 1 1 3 5      sirali dizi
+ 		3 1 1 5 1      sirasýz gerçek deðer
+		1 2 4 0 3      indexler */
+		
+		say_sut2=siralama(say_sut2);//say_sut2 sýralandý ve kullanýma hazýrdýr
+		System.out.println("siralandi say_sut 2");
+		System.out.println("");
+		for(int i=0;i<boyut;i++)
+		{
+			System.out.print(say_sut2[i]+" ");
+			
+		}
+		System.out.println("");
+		System.out.println("say_sut");
+		System.out.println("");
+		for(int i=0;i<boyut;i++)
+		{
+			System.out.print(say_sut[i]+" ");
+			
+		}
+		System.out.println("");
+
+		sut_index=index_gonder(say_sut2,say_sut,boyut);//1. sýralanmýþ dizi, 2. sýralanmamýþ dizi, 3. boyut
+		System.out.println("");
+		System.out.println("sutun index deðeri");
+		for(int i=0;i<boyut;i++)
+		{
+			System.out.print(sut_index[i]+" ");
+			
+		}
+		System.out.println("");
+
+		say_sat2=siralama(say_sat2);//say_sut2 sýralandý ve kullanýma hazýrdýr
+		System.out.println("siralandi say_sat 2");
+		System.out.println("");
+		for(int i=0;i<boyut;i++)
+		{
+			System.out.print(say_sat2[i]+" ");
+			
+		}
+		System.out.println("");
+		System.out.println("say_sat");
+		System.out.println("");
+		for(int i=0;i<boyut;i++)
+		{
+			System.out.print(say_sat[i]+" ");
+			
+		}
+		System.out.println("");
+		
+		sat_index=index_gonder(say_sat2,say_sat,boyut);//1. sýralanmýþ dizi, 2. sýralanmamýþ dizi, 3. boyut
+		System.out.println("");
+		System.out.println("satir index deðeri");
+		for(int i=0;i<boyut;i++)
+		{
+			System.out.print(sat_index[i]+" ");
+			
+		}
+		System.out.println("");
+		
+		System.out.println("Kontrol noktasý satir");
+		for(int i=0;i<boyut;i++)
+		{
+			System.out.println(say_sat2[i]+" ");
+		}
+		
+		System.out.println("");
+		for(int i=0;i<boyut;i++)
+		{
+			System.out.println(say_sut2[i]+" ");
+		}
+		System.out.println("");
+	
+		
+		
+		
+		
+		
+		/*1. aþama BAÞLIYOORRR*/
+		int indis=0;
+	for(int t=0;t<boyut;t++){
+		//for(int i=0;i<boyut;i++){
+			int i=0;
+			if(say_sat2[i]>say_sut2[i] && say_sat2[i]!=1)
+			{
+				for(int j=0;j<boyut;j++)
+				{
+					indis=sat_index[i];//0 ýn fazla olduðu yer
+					gecici[indis][j]=-5;
+					
+				}
+				
+				/*tekrardan satir sutun sayýlýyor*/
+				say_sat=sifir_say_sat(gecici,boyut);
+				say_sat2=sifir_say_sat(gecici,boyut);
+				say_sut=sifir_say_sut(gecici,boyut);
+				say_sut2=sifir_say_sut(gecici,boyut);
+				say_sut2=siralama(say_sut2);
+				sut_index=index_gonder(say_sut2,say_sut,boyut);
+				say_sat2=siralama(say_sat2);
+				sat_index=index_gonder(say_sat2,say_sat,boyut);
+				/*tekrardan satir sutun sayýlýyor*/
+				
+				
+				/*System.out.println("say_sat2 ");
+				for(int k=0;k<boyut;k++){ System.out.print(say_sat2[i]+" "); }
+				System.out.println("");
+				System.out.println("say_sut2 ");
+				for(int k=0;k<boyut;k++){ System.out.print(say_sut2[i]+" "); }
+				sat_index=index_gonder(say_sat2,say_sat,boyut);
+				System.out.println("");
+				System.out.println("sat_index ");
+				for(int k=0;k<boyut;k++){ System.out.print(sat_index[i]+" "); }*/
+				
+			}
+			if(say_sat2[i] < say_sut2[i] && say_sut2[i]!=1)
+			{
+				for(int j=0;j<boyut;j++)
+				{
+					indis=sut_index[i];//0 ýn fazla olduðu yer
+					gecici[j][indis]=-5;
+					
+				}
+
+
+				/*tekrardan satir sutun sayýlýyor*/
+				say_sat=sifir_say_sat(gecici,boyut);
+				say_sat2=sifir_say_sat(gecici,boyut);
+				say_sut=sifir_say_sut(gecici,boyut);
+				say_sut2=sifir_say_sut(gecici,boyut);
+				say_sut2=siralama(say_sut2);
+				sut_index=index_gonder(say_sut2,say_sut,boyut);
+				say_sat2=siralama(say_sat2);
+				sat_index=index_gonder(say_sat2,say_sat,boyut);
+				/*tekrardan satir sutun sayýlýyor*/
+				
+				
+				
+				/*System.out.println("say_sat2 ");
+				for(int k=0;k<boyut;k++){ System.out.print(say_sat2[i]+" "); }
+				System.out.println("");
+				System.out.println("sat_index ");
+				for(int k=0;k<boyut;k++){ System.out.print(sat_index[i]+" "); }
+				System.out.println("");
+				System.out.println("say_sut2 ");
+				for(int k=0;k<boyut;k++){ System.out.print(say_sut2[i]+" "); }
+				sut_index=index_gonder(say_sut2,say_sut,boyut);
+				System.out.println("");
+				System.out.println("sut_index ");
+				for(int k=0;k<boyut;k++){ System.out.print(sut_index[i]+" "); }*/
+				
+				
+				
+			}	
+			if(say_sat2[i] == say_sut2[i] && say_sat2[i]!=1)
+			{
+				for(int j=0;j<boyut;j++)
+				{
+					indis=sut_index[i];//0 ýn fazla olduðu yer
+					gecici[j][indis]=-5;
+					
+				}
+
+
+				
+				/*tekrardan satir sutun sayýlýyor*/
+				say_sat=sifir_say_sat(gecici,boyut);
+				say_sat2=sifir_say_sat(gecici,boyut);
+				say_sut=sifir_say_sut(gecici,boyut);
+				say_sut2=sifir_say_sut(gecici,boyut);
+				say_sut2=siralama(say_sut2);
+				sut_index=index_gonder(say_sut2,say_sut,boyut);
+				say_sat2=siralama(say_sat2);
+				sat_index=index_gonder(say_sat2,say_sat,boyut);
+				/*tekrardan satir sutun sayýlýyor*/
+				
+				
+				
+				
+				
+				/*System.out.println("say_sat2 ");
+				for(int k=0;k<boyut;k++){ System.out.print(say_sat2[i]+" "); }
+				System.out.println("");
+				System.out.println("sat_index ");
+				for(int k=0;k<boyut;k++){ System.out.print(sat_index[i]+" "); }
+				System.out.println("");
+				System.out.println("say_sut2 ");
+				for(int k=0;k<boyut;k++){ System.out.print(say_sut2[i]+" "); }
+				sut_index=index_gonder(say_sut2,say_sut,boyut);
+				System.out.println("");
+				System.out.println("sut_index ");
+				for(int k=0;k<boyut;k++){ System.out.print(sut_index[i]+" "); }*/
+				
+				
+				
+			}
+	
+			
+	
+	}
+		/*1. aþama BÝTÝYORRRR*/
+		
+		System.out.println("1. aþamada");
+		dizi_yaz(gecici,boyut);
+		System.out.println("");
+		
+		/*System.out.println("satir çizgi");*/
+		int cizgi_adet_satir=0;/*cizgi_say_sat(gecici,boyut,1);*/
+		/*System.out.println(cizgi_adet_satir);
+		System.out.println("");*/
+		int karakter=-5;
+		/*System.out.println("sutun çizgi");*/
+		int cizgi_adet_sutun=0;/*cizgi_say_sut(gecici,boyut,1);*/
+		/*System.out.println(cizgi_adet_sutun);
+		System.out.println("");*/
+		
+	//2.AÞAMA BURDAN BAÞLIYOOOOOOOORRRRRRRRR ÝKÝNCÝ AÞAMADA SATIR YA DA SUTUNDA TEK KALAN SIFIRLARIN DÝÐER ÇÝZÝLENLERLE EN FAZLA NE KADARINI KAPSAYABÝLÝR O ÇÖZÜLMEYE ÇALIÞILDI
+		for(int i=0;i<boyut;i++){
+			
+			for(int j=0;j<boyut;j++)
+			{
+				if(gecici[i][j]==0)
+				{
+					cizgi_adet_satir=cizgi_say_sat(gecici,karakter);
+					cizgi_adet_sutun=cizgi_say_sut(gecici,karakter);
+					System.out.println("satir çizgi");
+					System.out.println(cizgi_adet_satir);
+					System.out.println("");
+					System.out.println("sutun çizgi");
+					System.out.println(cizgi_adet_sutun);
+					System.out.println("");
+					
+					
+					
+					if(cizgi_adet_satir<cizgi_adet_sutun)
+					{
+						for(int k=j;k<=j;k++)
+						{
+							for(int t=0;t<boyut;t++){
+									gecici[t][k]=-5;
+							}
+						}
+					}
+					else if(cizgi_adet_satir>cizgi_adet_sutun)
+					{
+						for(int k=i;k<=i;k++)
+						{
+							for(int t=0;t<boyut;t++){
+									gecici[k][t]=-5;
+							}
+						}
+					}
+					else
+					{
+						for(int k=i;k<=i;k++)
+						{
+							for(int t=0;t<boyut;t++){
+									gecici[t][k]=-5;		//k burada i ile eþit olduðu için t döngü elemaný 0 dan 5 e deðer alýr
+							}								//bu sayede satýra bir çizgi daha çekilmiþ olunur
+						}
+					}
+					
+					
+					
+				}
+				
+				
+				
+			}
+		}
+//2. AÞAMA BURADA BÝTÝYOR.		
+		
+		System.out.println("2. aþamada");
+		dizi_yaz(gecici,boyut);
+		System.out.println("");
+		
+		
+		
+		
+		
+		
+		return gecici;
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	static void  tek_ata(ArrayList<Integer>sat_isci,ArrayList<Integer>sut_maliyet,ArrayList<Integer>sat_atanan,ArrayList<Integer>sut_atanan)
+	{
+		
+		
+		
+		
+		int degis1=0,degis2=0;
+		
+		
+		
+		
+		
+		
+		
+		
+		//eðer iþçi de aranan bir deðer tek ise onun indexine karþýlýk gelen maliyet tablosundaki iþe ata
+		
+		
+		int aranan=sat_isci.get(0);
+		int sayac=0;
+		for(int i=0;i<sat_isci.size();i++)
+		{
+			
+			if(aranan != sat_isci.get(i))
+			{
+				aranan=sat_isci.get(i);
+				
+			}
+			for(int j=0;j<sat_isci.size();j++)
+			{
+				if(sat_isci.get(j)==aranan)
+				{
+					sayac++;
+				}
+				
+			}
+			if(sayac==1)
+			{
+				System.out.println("iþçi "+sat_isci.get(i)+" "+sut_maliyet.get(i)+"iþine atandý");
+
+				//atama yapýlan deðerleri maliyet hesabý için tutuyoruz.
+				sat_atanan.add(sat_isci.get(i));  //sat_isci ve sut_maliyet in içerisindeki deðerleri alýyoruz
+				sut_atanan.add(sut_maliyet.get(i));		//bu noktalar matristeki 0 larýn yerini gösteriyor
+				degis1=sat_isci.get(i);
+				degis2=sut_maliyet.get(i);
+			System.out.println("degis1 = "+degis1);	
+				System.out.println("degis2= "+degis2);
+				sat_isci.set(i,-1);
+			    sut_maliyet.set(i,-1);
+				
+			    for(int k=0;k<sut_maliyet.size();k++)
+				{
+					if(sat_isci.get(k)==degis1)
+					{
+						sat_isci.set(k,-1);
+						
+					}
+					if(sut_maliyet.get(k)==degis2)
+					{
+						sut_maliyet.set(k,-1);
+						
+					}
+					
+				}
+			}
+			sayac=0;
+			
+		}
+		
+		
+		/*atanan iþ bir daha atanmasýn diye deðerini -1 yapýyoruz*/
+		
+		//System.out.println(sut_atanan.get(0));
+		for(int i=0;i<sut_atanan.size();i++)
+		{
+			if(sut_maliyet.indexOf(sut_atanan.get(i))!=-1)
+			{
+				
+				sut_maliyet.set(sut_maliyet.indexOf(sut_atanan.get(i)),-1);
+				
+				
+			}
+			
+		}
+		/*atanan iþin -1 yapýlmasý bitti*/
+
+		
+		
+	}
+	
+	static void ata_bitir(ArrayList<Integer>sat_isci,ArrayList<Integer>sut_maliyet,ArrayList<Integer>sat_atanan,ArrayList<Integer>sut_atanan)
+	{
+		ArrayList <Integer> index_adet=new ArrayList<Integer>(); 
+		int say=0;
+		int ara=sat_isci.get(0);
+		for(int i=0;i<sat_isci.size();i++)
+		{
+			if(ara!=sat_isci.get(i) )
+			{
+				ara=sat_isci.get(i);
+				if(say !=0 ){
+				index_adet.add(say);
+				say=0;
+				}
+				
+			}
+			if(ara!=-1 && sut_maliyet.get(i)!=-1 )
+			{
+				say++;
+			}
+			
+		}
+		System.out.println("");
+		System.out.println("index adedi:");
+		System.out.println("");
+		for(int i=0;i<index_adet.size();i++)
+		{
+			System.out.print(index_adet.get(i)+" ");
+			
+		}
+		System.out.println("");
+		
+		
+		 int h=0,gec=0,topi=0,degisim1=0,degisim2=0;
+		
+		 
+		 while(index_adet.size()>h)
+		 {
+			 topi=index_adet.get(h)+gec;
+			 for(int j=gec;j<topi;j++)
+			 {
+				 
+				 if(sat_isci.get(j)!=-1 && sut_maliyet.get(j)!=-1)
+				 {
+					 sat_atanan.add(sat_isci.get(j));
+					 sut_atanan.add(sut_maliyet.get(j));
+					 degisim1=sat_isci.get(j);
+					 degisim2=sut_maliyet.get(j);
+					 
+					 for(int t=0;t<sat_isci.size();t++)
+					 {
+						 if(sat_isci.get(t)==degisim1){
+							 sat_isci.set(t, -1);
+						     
+						 }
+						 if(sut_maliyet.get(t)==degisim2){
+							 
+						     sut_maliyet.set(t, -1);
+						 }
+						 
+					 }
+					 
+					 for(int i=0;i<sat_isci.size();i++)
+					 {
+						 if(sat_isci.get(i)==-1)
+						 {
+							 sut_maliyet.set(i, -1);
+						 }
+						 
+						 if(sut_maliyet.get(i)==-1)
+						 {
+							 sat_isci.set(i, -1);
+						 }
+						 
+					 }
+					 
+					 
+					 break;
+				 }
+				 
+			 }
+			 
+			 for(int i=0;i<sat_isci.size();i++)
+			 {
+				 if(sat_isci.get(i)==-1 || sut_maliyet.get(i)==-1 )
+				 {
+					 sut_maliyet.set(i, -1);
+					 sat_isci.set(i, -1);
+				 }
+				 
+				 
+			 }
+
+				
+				
+				
+				
+				//eðer iþçi de aranan bir deðer tek ise onun indexine karþýlýk gelen maliyet tablosundaki iþe ata
+				
+			 
+			 
+			 tek_ata(sat_isci, sut_maliyet, sat_atanan, sut_atanan);
+			 
+				//System.out.println(sut_atanan.get(0));
+				/*for(int i=0;i<sut_atanan.size();i++)
+				{
+					if(sut_maliyet.indexOf(sut_atanan.get(i))!=-1)
+					{
+						
+						sut_maliyet.set(sut_maliyet.indexOf(sut_atanan.get(i)),-1);
+						
+						
+					}
+					
+				}*/
+				/*atanan iþin -1 yapýlmasý bitti*/
+			 
+			 gec=index_adet.get(h);
+			 h++;
+			 
+		 }
+		 System.out.println("");
+		 System.out.println("sat_isci:");
+		 System.out.println("");
+		 for(int i=0;i<sat_isci.size();i++)
+		 {
+			 
+			 System.out.print(sat_isci.get(i)+" ");
+			 
+		 }
+		 
+		 System.out.println("");
+		 System.out.println("sut_maliyet:");
+		 System.out.println("");	 
+		 for(int i=0;i<sat_isci.size();i++)
+		 {
+			 
+			 System.out.print(sut_maliyet.get(i)+" ");
+			 
+		 }
+		 System.out.println("");
+		 System.out.println("sat_atanan:");
+		 System.out.println("");
+		 for(int i=0;i<sat_atanan.size();i++)
+		 {
+			 
+			 System.out.print(sat_atanan.get(i)+" ");
+			 
+		 }
+		
+		 System.out.println("");
+		 System.out.println("sut_atanan:");
+		 System.out.println("");
+		 for(int i=0;i<sat_atanan.size();i++)
+		 {
+			 
+			 System.out.print(sut_atanan.get(i)+" ");
+			 
+		 }
+		 System.out.println("");
+		 System.out.println("sat_atanan:");
+		 System.out.println("");
+		 for(int i=0;i<sat_atanan.size();i++)
+		 {
+			 
+			 System.out.print(sat_atanan.get(i)+" ");
+			 
+		 }
+		 System.out.println("");
+		 System.out.println("sut_atanan:");
+		 System.out.println("");
+		 for(int i=0;i<sut_atanan.size();i++)
+		 {
+			 
+			 System.out.print(sut_atanan.get(i)+" ");
+			 
+		 }
+		 
+		 
+		 System.out.println("");
+		 for(int i=0;i<sat_atanan.size();i++)
+		 {
+			 
+			 System.out.println("iþçi "+sat_atanan.get(i)+" "+sut_atanan.get(i)+"iþine atandý");
+			 
+		 }
+		 
+		
+		
+		
+	}
+		public static void main(String[] args) {
+		
+		/*//klavyeden boyut bilgisi alýnýr
+		 Scanner sat=new Scanner(System.in);	
+        int boyut = sat.nextInt();
+        //boyuta göre dizi tanýmlanýr
+		int[][] sayi = new int[boyut][boyut];
+		int[][] gecici=new int[boyut][boyut];
+        Random rnd=new Random();
+		//diziye random deðerler atanýr  
+		for (int i=0;i<boyut;i++)
+		{
+			for (int j=0;j<boyut;j++)
+			{
+				sayi[i][j]= rnd.nextInt(11)*10+1;	
+			}
+		}
+		//ve gecici dizisine sayi kopyalanýr çünkü orjinal diziyi en sonda maliyet belirlemede
+		//kullanacaðýz
+		for(int i=0;i<boyut;i++)
+		{
+			for(int j=0;j<boyut;j++)
+			{
+				gecici[i][j]=sayi[i][j];
+				
+			}
+		}
+		*/
+		/*
+        int[][] sayi = new int[][]{
+                {15,11,17,13,13},
+                {20,23,10,16,19},
+                {23,15,18,21,24},
+                {19,17,18,15,14},
+                {19,21,11,17,20}
+            };
+        int[][] gecici = new int[][]{
+        		   {15,11,17,13,13},
+                   {20,23,10,16,19},
+                   {23,15,18,21,24},
+                   {19,17,18,15,14},
+                   {19,21,11,17,20}
+              };*/
+			
+			  int[][] sayi = new int[][]{
+	        		   {14,5,8,7},
+	                   {2,12,6,5},
+	                   {7,8,3,9},
+	                   {2,4,6,10}
+	                    };
+			  int[][] gecici = new int[][]{
+	        		   {14,5,8,7},
+	                   {2,12,6,5},
+	                   {7,8,3,9},
+	                   {2,4,6,10}
+	                    };
+        /*int[][] sayi = new int[][]{
+      		   {52,54,74,27,80},
+                 {15,11,95,16,30},
+                 {82,2,15,88,52},
+                 {91,22,62,67,38},
+                 {76,11,87,94,89}
+            };
+        int[][] gecici = new int[][]{
+     		   {52,54,74,27,80},
+                {15,11,95,16,30},
+                {82,2,15,88,52},
+                {91,22,62,67,38},
+                {76,11,87,94,89}
+           };  */
+       
+      /*  int[][] sayi = new int[][]{
+     		   {57,68,82,62},
+                {55,67,61,4},
+                {18,14,87,34},
+                {55,97,94,84}
+           };
+        int[][] gecici = new int[][]{
+      		   {57,68,82,62},
+                 {55,67,61,4},
+                 {18,14,87,34},
+                 {55,97,94,84}
+            };  */
+        
+        int boyut=gecici.length;
+        
+     
+		//System.out.println("gecici dizi");
+		dizi_yaz(gecici,boyut);
+		//Zmin e göre HER boyuttAKÝ EN DÜÞÜK DEÐERLÝKLÝ
+		//VERÝLERÝ ALACAÐIZ
+		gecici=zmin_sat(gecici,boyut);
+		//yeni satýr fark dizisi
+		System.out.println("satir farklarý");
+		dizi_yaz(gecici,boyut);
+		gecici=zmin_sut(gecici,boyut);
+		//yeni sutun fark dizisi
+		System.out.println("yeni fark dizisi sutun farklarý");
+		dizi_yaz(gecici,boyut);
+			
+ 
+		int[][] silinenler=new int[boyut][boyut];
+		
+	
+		/*öncelikle satýr ve sutunda üzeri çizilecek olanlarý bir yere kopyalýyoruz*/
+		for(int i=0;i<boyut;i++){
+			for(int j=0;j<boyut;j++)
+			{
+					silinenler[i][j]=gecici[i][j];
+			
+			}
+	}
+		
+		System.out.println("SÝLÝNENLEEEEEEER gecicinin kopyasý");
+		dizi_yaz(silinenler,boyut);
+		System.out.println("");
+
+
+		int cizgi_sayisi=0;
+		int cizgi_sayisi1=0;
+		int cizgi_sayisi2=0;
+		/*cizgi çekme kontrol 2 adet farklý çizgi bölümü var*/
+		gecici=cizgi_cek1(gecici,silinenler,boyut);
+		cizgi_sayisi1=toplam_cizgi(gecici, boyut);
+		gecici=cizgi_cek2(gecici, silinenler, boyut);
+		cizgi_sayisi2=toplam_cizgi(gecici, boyut);
+		if(cizgi_sayisi1>cizgi_sayisi2)
+		{
+			System.out.println("Tercih edilen");
+			cizgi_sayisi=cizgi_sayisi2;
+			gecici=cizgi_cek2(gecici, silinenler, boyut);
+		}
+		else
+		{
+			System.out.println("Tercih edilen");
+			cizgi_sayisi=cizgi_sayisi1;	
+			gecici=cizgi_cek1(gecici,silinenler, boyut);
+		}
+		System.out.println("üzeri -5 ile çizilen geçici---------");
+		dizi_yaz(gecici,boyut);
+		
+		/*son  çizgi çekme kontrol*/
+		
+		//Satýrda ve sutündaki -5 lerin sayýlýþý
+		System.out.println("toplam cizgi= "+cizgi_sayisi);
+		if(cizgi_sayisi==boyut)
+			
+		{
+			System.out.println("2. adýma geçilmiyor");
+			gecici=temizle(gecici,silinenler,boyut);					//k_islemleri fonksiyonunu burada çalýþtýrmadýðýmýz için bu fonksiyonda temizlettim
+			//k_islemleri fonksiyonu zaten içerde bulunan -5 deðerlerini temizliyorki altýndaki gerçek deðerlere çizginin köþe noktalarýndaki gerçek deðere k deðeri eklenebilsin
+			//aksi halde -5 deðerinin üzerine k deðeri eklenmiþ olacaktý.
+			System.out.println("Çizgiler silindi ve deðerler yerlerine yazýldý");
+			dizi_yaz(gecici,boyut);
+		}
+		else if(cizgi_sayisi<boyut)
+		{
+			
+			System.out.println("2. adýma geçiyoruz...");
+			k_islemleri(gecici, silinenler, boyut);
+			dizi_yaz(gecici,boyut);
+			for(int i=0;i<gecici.length;i++)
+			{
+				for(int j=0;j<gecici.length;j++)
+				{
+					silinenler[i][j]=gecici[i][j];
+					
+				}
+			}
+			/*cizgi çekme kontrol 2 adet farklý çizgi bölümü var*/
+			gecici=cizgi_cek1(gecici,silinenler,boyut);
+			cizgi_sayisi1=toplam_cizgi(gecici, boyut);
+			gecici=cizgi_cek2(gecici, silinenler, boyut);
+			cizgi_sayisi2=toplam_cizgi(gecici, boyut);
+			if(cizgi_sayisi1>cizgi_sayisi2)
+			{
+				System.out.println("Tercih edilen");
+				cizgi_sayisi=cizgi_sayisi2;
+				gecici=cizgi_cek2(gecici, silinenler, boyut);
+			}
+			else
+			{
+				System.out.println("Tercih edilen");
+				cizgi_sayisi=cizgi_sayisi1;	
+				gecici=cizgi_cek1(gecici,silinenler, boyut);
+			}
+			System.out.println("üzeri -5 ile çizilen geçici---------");
+			dizi_yaz(gecici,boyut);
+			
+			/*son  çizgi çekme kontrol*/
+				
+			
+			//Satýrda ve sutündaki -5 ler sayýldý
+			//Eðer 5x5 lik için 5 tane çizgi bulamazsa o halde aþaðýdaki iþlemlere geçecektir.
+			
+			while(cizgi_sayisi<boyut){
+				//----silinenler -5 ten temizlenmiþ geciciden kopyalanmak zorundadýr. Yoksa verileri kaybederiz.
+		    	
+				
+
+				System.out.println("2. adýma geçiyoruz...");
+				k_islemleri(gecici, silinenler, boyut);
+				dizi_yaz(gecici,boyut);
+				for(int i=0;i<gecici.length;i++)
+				{
+					for(int j=0;j<gecici.length;j++)
+					{
+						silinenler[i][j]=gecici[i][j];
+						
+					}
+				}
+				/*cizgi çekme kontrol 2 adet farklý çizgi bölümü var*/
+				gecici=cizgi_cek1(gecici,silinenler,boyut);
+				cizgi_sayisi1=toplam_cizgi(gecici, boyut);
+				gecici=cizgi_cek2(gecici, silinenler, boyut);
+				cizgi_sayisi2=toplam_cizgi(gecici, boyut);
+				if(cizgi_sayisi1>cizgi_sayisi2)
+				{
+					System.out.println("Tercih edilen");
+					cizgi_sayisi=cizgi_sayisi2;
+					gecici=cizgi_cek2(gecici, silinenler, boyut);
+				}
+				else
+				{
+					System.out.println("Tercih edilen");
+					cizgi_sayisi=cizgi_sayisi1;	
+					gecici=cizgi_cek1(gecici,silinenler, boyut);
+				}
+				System.out.println("üzeri -5 ile çizilen geçici---------");
+				dizi_yaz(gecici,boyut);
+				
+				/*son  çizgi çekme kontrol*/
+					
+				
+				
+				
+				
+				
+			
+			
+			}
+		
+		}
+		
+		System.out.println("cizgi adedi"+cizgi_sayisi);
+		gecici=temizle(gecici,silinenler,boyut);
+		dizi_yaz(silinenler,boyut);
+		System.out.println("");
+		dizi_yaz(gecici,boyut);
+		
+		
+		
+		//iþçi iþe atamasý yapýlýyor
+		
+		 ArrayList <Integer> sat_isci=new ArrayList<Integer>();
+		 ArrayList <Integer> sut_maliyet=new ArrayList<Integer>();
+		 ArrayList <Integer> sat_atanan=new ArrayList<Integer>();
+		 ArrayList <Integer> sut_atanan=new ArrayList<Integer>();
+				
+		
+		for(int i=0;i<gecici.length;i++)
+		{
+			for(int j=0;j<gecici.length;j++)
+			{
+				if(gecici[i][j]==0)
+				{
+					sat_isci.add(i);
+					sut_maliyet.add(j);
+					
+					
+				}
+				
+				
+			}
+		}
+		System.out.println("Sýfýrlarýn koordinatlarý iþçi ve maliyet olarak belirlendi");
+		System.out.println("iþçi");
+		for(int i=0;i<sat_isci.size();i++)
+		{
+			
+			System.out.print(sat_isci.get(i)+" ");
+			
+		}
+		System.out.println("");
+		System.out.println("Maliyet");
+		for(int i=0;i<sut_maliyet.size();i++)
+		{
+			System.out.print(sut_maliyet.get(i)+" ");
+			
+			
+		}
+		System.out.println("");
+		
+		
+		
+
+		
+		
+		/*burada*/
+		
+		tek_ata(sat_isci,sut_maliyet,sat_atanan,sut_atanan);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		System.out.println("");
+		for(int i=0;i<sat_isci.size();i++)
+		{
+			
+			System.out.print(sat_isci.get(i)+" ");
+		}
+		System.out.println("");
+		for(int i=0;i<sut_maliyet.size();i++)
+		{
+			System.out.print(sut_maliyet.get(i)+" ");
+			
+		}
+		
+
+		System.out.println("");
+		
+		
+		
+		
+		
+		/*Yapýlacak þey
+		 * 
+		 * deðerlerin -1 li olmayanlarýný tekli 0 lýda atanan deðerlerle toplayýp en az maliyetlisini al
+		 * sonra onun deðerini hesaplamalarla ekrana bas
+		 * 
+		 * 
+		 * 
+		 * */
+		
+		
+		
+		
+		
+	
+		//satýr ve sutunda iki defa bulunanlarýn atamasý 
+		
+		
+		ata_bitir(sat_isci,sut_maliyet,sat_atanan,sut_atanan);
+		 
+		
+		/*MALÝYET HESABI*/
+		
+		 int toplam=0;
+		for(int i=0;i<sut_atanan.size();i++)
+		{
+			
+			toplam=toplam+sayi[sat_atanan.get(i)][sut_atanan.get(i)];
+			
+			
+		}
+		System.out.println("Toplam Maliyet "+toplam);
+		 
+		 
+		 
+		 
+		 
+		 
+	}
+
+}
